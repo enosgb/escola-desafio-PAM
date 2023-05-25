@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
-  max-width: 1000px;
-  margin-left: 200px;
-  margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
+ display: flex;
+  flex-direction: column;
+  margin: 0 200px;
+  min-height: calc(100vh - 100px);
+  margin-bottom: 43px !important;
 `;
 
 export const Title = styled.h2`

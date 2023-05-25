@@ -15,10 +15,10 @@ export const Modal = styled.div`
 
 export const ModalContent = styled.div`
   background-color: #fefefe;
-  margin: 15% auto; 
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 60%; 
+  width: 60%;
   border-radius: 10px;
 `;
 
@@ -35,3 +35,18 @@ export const CloseIcon = styled.div`
     cursor: pointer;
   }
 `;
+
+export const ModalTitle = styled.h2`
+  font-size: 24px;
+`;
+
+export const ModalHeader = styled.div``;
+
+export const ModalBody = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+export const Form = styled.form`
+`

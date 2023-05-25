@@ -1,8 +1,20 @@
 import { styled } from "styled-components";
 
-export const SearchInput = styled.input`
+export const InputControl = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-right: 15px;
+`;
+
+export const Label = styled.p`
+  font-size: 18px;
+  margin-bottom: 0px;
+`;
+
+export const Input = styled.input`
   box-sizing: border-box;
-  width: 250px;
+  width: ${(props) => props.width};
   height: 35px;
   background: #f5f7fb;
   border: none;

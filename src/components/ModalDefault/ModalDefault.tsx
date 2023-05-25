@@ -1,4 +1,12 @@
-import { CloseIcon, Modal, ModalContent } from "./style";
+import InputDefault from "../InputDefault/InputDefault";
+import {
+  CloseIcon,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+  ModalTitle,
+} from "./style";
 
 interface IModalDefaultProps {
   open: boolean;
@@ -12,8 +20,19 @@ export function ModalDefault({ open, setOpen }: IModalDefaultProps) {
         <Modal>
           <ModalContent>
             <CloseIcon onClick={() => setOpen(false)}>&times;</CloseIcon>
-
-            <p>TESTEASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS</p>
+            <ModalHeader>
+              <ModalTitle> Novo Aluno</ModalTitle>
+            </ModalHeader>
+            <ModalBody>
+              <InputDefault label="Nome:" placeholder="Nome..." />
+              <InputDefault
+                label="Data de Nascimento:"
+                type="date"
+                width="200px"
+                placeholder="Data Nascimento"
+              />
+             
+            </ModalBody>
           </ModalContent>
         </Modal>
       ) : null}
