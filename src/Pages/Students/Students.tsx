@@ -29,16 +29,24 @@ export default function Students() {
   };
 
   useEffect(() => {
-    getStudents();
-  }, []);
+    if (!openModalDefault) {
+      getStudents();
+    }
+  }, [openModalDefault]);
 
   const modalBody = (
     <>
       <Row>
-        <InputDefault label="Nome:" placeholder="Nome..." width="300px" />
+        <InputDefault
+          name="nome"
+          label="Nome:"
+          placeholder="Nome..."
+          width="300px"
+        />
       </Row>
       <Row>
         <InputDefault
+          name="data_nascimento"
           label="Data de Nascimento:"
           type="date"
           width="300px"
@@ -46,10 +54,15 @@ export default function Students() {
         />
       </Row>
       <Row>
-        <InputDefault label="RG:" placeholder="RG..." width="300px" />
+        <InputDefault name="rg" label="RG:" placeholder="RG..." width="300px" />
       </Row>
       <Row>
-        <InputDefault label="CPF" placeholder="CPF.." width="300px" />
+        <InputDefault
+          name="cpf"
+          label="CPF"
+          placeholder="CPF.."
+          width="300px"
+        />
       </Row>
     </>
   );

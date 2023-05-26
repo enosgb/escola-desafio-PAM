@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ButtonDefault from "../../components/ButtonDefault/ButtonDefault";
-import TableMain from "../../components/MainTable/StudentsTable";
 import Search from "../../components/Search/Search";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { Container, Title } from "../../style";
@@ -30,8 +29,10 @@ export default function Registration() {
   };
 
   useEffect(() => {
-    getStudents();
-  }, []);
+    if (!openModalDefault) {
+      getStudents();
+    }
+  }, [openModalDefault]);
 
   const selectOption = (
     <>
