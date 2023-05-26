@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonDefault from "../../components/ButtonDefault/ButtonDefault";
-import TableMain from "../../components/MainTable";
+import TableMain from "../../components/MainTable/StudentsTable";
 import { ModalDefault } from "../../components/ModalDefault/ModalDefault";
 
 import Search from "../../components/Search/Search";
@@ -9,10 +9,28 @@ import { Container, Title } from "../../style";
 import { TableTools } from "./style";
 import { Row } from "../../components/ModalDefault/style";
 import InputDefault from "../../components/InputDefault/InputDefault";
+import api from "../../services/api";
 
 export default function Students() {
   const table_headers = ["nome", "rg", "cpf", "data de nascimento"];
   const [openModalDefault, setOpenModalDefault] = useState(false);
+
+  const [students, setStudents] = useState([]);
+
+  const getStudents = async () => {
+    await api
+      .get("/Alunos")
+      .then((response) => {
+        setStudents(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getStudents();
+  }, []);
 
   const modalBody = (
     <>
@@ -54,7 +72,7 @@ export default function Students() {
             text={"Adicionar Aluno"}
           />
         </TableTools>
-        <TableMain table_headers={table_headers} />
+        <TableMain table_headers={table_headers} students={students} />
       </Container>
     </>
   );

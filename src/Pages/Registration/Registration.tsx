@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonDefault from "../../components/ButtonDefault/ButtonDefault";
-import TableMain from "../../components/MainTable";
+import TableMain from "../../components/MainTable/StudentsTable";
 import Search from "../../components/Search/Search";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { Container, Title } from "../../style";
@@ -9,10 +9,29 @@ import { ModalDefault } from "../../components/ModalDefault/ModalDefault";
 import { Row } from "../../components/ModalDefault/style";
 
 import SelectDefault from "../../components/SelectDefault/SelectDefault";
+import RegitrationTable from "../../components/MainTable/RegistrationTable";
+import api from "../../services/api";
 
 export default function Registration() {
   const table_headers = ["período", "aluno", "curso"];
   const [openModalDefault, setOpenModalDefault] = useState(false);
+
+  const [registrations, setRegistrations] = useState([]);
+
+  const getStudents = async () => {
+    await api
+      .get("/Matriculas")
+      .then((response) => {
+        setRegistrations(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getStudents();
+  }, []);
 
   const selectOption = (
     <>
@@ -54,7 +73,10 @@ export default function Registration() {
             onClick={() => setOpenModalDefault(true)}
           />
         </TableTools>
-        <TableMain table_headers={table_headers} />
+        <RegitrationTable
+          table_headers={table_headers}
+          registrations={registrations}
+        />
       </Container>
     </>
   );
