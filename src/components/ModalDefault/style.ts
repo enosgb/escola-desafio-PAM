@@ -18,7 +18,7 @@ export const ModalContent = styled.div`
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 60%;
+  width: 400px;
   border-radius: 10px;
 `;
 
@@ -42,11 +42,14 @@ export const ModalTitle = styled.h2`
 
 export const ModalHeader = styled.div``;
 
-export const ModalBody = styled.div`
+export const Row = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 `;
 
-export const Form = styled.form`
-`
+export const ModalFooter = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+`;

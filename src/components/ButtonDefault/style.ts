@@ -4,6 +4,7 @@ export const ButtonD = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+    
   padding: 18px 18px 18px 10px;
   width: 220px;
   height: 35px;

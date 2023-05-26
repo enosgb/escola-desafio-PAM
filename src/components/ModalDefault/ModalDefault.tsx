@@ -1,9 +1,9 @@
-import InputDefault from "../InputDefault/InputDefault";
+import ButtonDefault from "../ButtonDefault/ButtonDefault";
 import {
   CloseIcon,
   Modal,
-  ModalBody,
   ModalContent,
+  ModalFooter,
   ModalHeader,
   ModalTitle,
 } from "./style";
@@ -11,9 +11,16 @@ import {
 interface IModalDefaultProps {
   open: boolean;
   setOpen: (open: boolean) => void;
+  modalTitle: string;
+  modalBody: React.JSX.Element;
 }
 
-export function ModalDefault({ open, setOpen }: IModalDefaultProps) {
+export function ModalDefault({
+  modalTitle,
+  open,
+  setOpen,
+  modalBody,
+}: IModalDefaultProps) {
   return (
     <>
       {open ? (
@@ -21,18 +28,12 @@ export function ModalDefault({ open, setOpen }: IModalDefaultProps) {
           <ModalContent>
             <CloseIcon onClick={() => setOpen(false)}>&times;</CloseIcon>
             <ModalHeader>
-              <ModalTitle> Novo Aluno</ModalTitle>
+              <ModalTitle> {modalTitle}</ModalTitle>
             </ModalHeader>
-            <ModalBody>
-              <InputDefault label="Nome:" placeholder="Nome..." />
-              <InputDefault
-                label="Data de Nascimento:"
-                type="date"
-                width="200px"
-                placeholder="Data Nascimento"
-              />
-             
-            </ModalBody>
+            {modalBody}
+            <ModalFooter>
+              <ButtonDefault text="Salvar" />
+            </ModalFooter>
           </ModalContent>
         </Modal>
       ) : null}
