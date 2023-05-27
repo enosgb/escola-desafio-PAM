@@ -12,28 +12,28 @@ import api from "../../services/api";
 
 interface IStudentProps {
   id: number;
-  nome: string;
+  name: string;
   rg: string;
   cpf: string;
-  data_nascimento: string;
+  birth_date: string;
 }
 
 interface ICourseProps {
   id: number;
-  codigo_curso: string;
-  descricao: string;
-  nivel: string;
-  nivel_name: string;
+  course_code: string;
+  description: string;
+  level: string;
+  level_name: string;
 }
 
 interface IRegistrationProps {
   id: number;
-  periodo: string;
-  aluno: string;
-  curso: string;
-  periodo_nome: string;
-  aluno_nome: string;
-  curso_nome: string;
+  period: string;
+  student: string;
+  course: string;
+  period_name: string;
+  student_name: string;
+  course_name: string;
 }
 
 export default function Registration() {
@@ -53,11 +53,11 @@ export default function Registration() {
 
   const getCoursesOptions = async () => {
     await api
-      .get(`/Cursos/?search=${search}`)
+      .get(`/Courses/?search=${search}`)
       .then((response) => {
         let temp = response.data.map((course: ICourseProps) => ({
           value: course.id,
-          option: course.descricao,
+          option: course.description,
         }));
         setCoursesOptions(temp);
       })
@@ -68,11 +68,11 @@ export default function Registration() {
 
   const getStudentsOptions = async () => {
     await api
-      .get(`/Alunos/?search=${search}`)
+      .get(`/Students/?search=${search}`)
       .then((response) => {
         let temp = response.data.map((student: IStudentProps) => ({
           value: student.id,
-          option: student.nome,
+          option: student.name,
         }));
 
         setStudentsOptions(temp);
@@ -84,7 +84,7 @@ export default function Registration() {
 
   const getRegistrations = async () => {
     await api
-      .get(`/Matriculas/?search=${search}`)
+      .get(`/Registrations/?search=${search}`)
       .then((response) => {
         setRegistrations(response.data);
       })
@@ -95,7 +95,7 @@ export default function Registration() {
 
   const getRegistrationPeriods = async () => {
     await api
-      .get(`/matricula/periods/`)
+      .get(`/registration/periods/`)
       .then((response) => {
         setRegistrationsPeridod(response.data);
       })
@@ -117,24 +117,24 @@ export default function Registration() {
     <>
       <Row>
         <SelectDefault
-          defaultValue={registrationEdit?.periodo}
-          name="periodo"
+          defaultValue={registrationEdit?.period}
+          name="period"
           label="Período:"
           options={registrationPeriod}
         />
       </Row>
       <Row>
         <SelectDefault
-          defaultValue={registrationEdit?.aluno}
-          name="aluno"
+          defaultValue={registrationEdit?.student}
+          name="student"
           label="Aluno:"
           options={studentsOptions}
         />
       </Row>
       <Row>
         <SelectDefault
-          defaultValue={registrationEdit?.curso}
-          name="curso"
+          defaultValue={registrationEdit?.course}
+          name="course"
           label="Curso:"
           options={coursesOptions}
         />

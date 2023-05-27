@@ -12,10 +12,10 @@ import StudentsTable from "../../components/MainTable/StudentsTable";
 
 interface IStudentProps {
   id: number;
-  nome: string;
+  name: string;
   rg: string;
   cpf: string;
-  data_nascimento: string;
+  birth_date: string;
 }
 
 export default function Students() {
@@ -30,7 +30,7 @@ export default function Students() {
 
   const getStudents = async () => {
     await api
-      .get(`/Alunos/?search=${search}`)
+      .get(`/Students/?search=${search}`)
       .then((response) => {
         setStudents(response.data);
       })
@@ -49,8 +49,8 @@ export default function Students() {
     <>
       <Row>
         <InputDefault
-          defaultValue={studentEdit?.nome ?? ""}
-          name="nome"
+          defaultValue={studentEdit?.name ?? ""}
+          name="name"
           label="Nome:"
           placeholder="Nome..."
           width="300px"
@@ -58,12 +58,12 @@ export default function Students() {
       </Row>
       <Row>
         <InputDefault
-          name="data_nascimento"
+          name="birth_date"
           label="Data de Nascimento:"
           type="date"
           width="300px"
           placeholder="Data Nascimento"
-          defaultValue={studentEdit?.data_nascimento ?? ""}
+          defaultValue={studentEdit?.birth_date ?? ""}
         />
       </Row>
       <Row>

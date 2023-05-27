@@ -23,14 +23,14 @@ interface IStudentProps {
   nome: string;
   rg: string;
   cpf: string;
-  data_nascimento: string;
+  birth_date: string;
 }
 
 interface ICourseProps {
   id: number;
-  codigo_curso: string;
-  descricao: string;
-  nivel: string;
+  course_code: string;
+  description: string;
+  level: string;
 }
 
 export function ModalDefault({
@@ -72,7 +72,7 @@ export function ModalDefault({
   const addStudent = async (data: IStudentProps) => {
     const headers = { "Content-Type": "application/json" };
     await api
-      .post("/Alunos/", data, { headers: headers })
+      .post("/Students/", data, { headers: headers })
       .then(() => {
         setOpen(false);
       })
@@ -84,7 +84,7 @@ export function ModalDefault({
   const updateStudent = async (data: IStudentProps) => {
     const headers = { "Content-Type": "application/json" };
     await api
-      .put(`/Alunos/${dataEdit?.id}/`, data, { headers: headers })
+      .put(`/Students/${dataEdit?.id}/`, data, { headers: headers })
       .then(() => {
         setOpen(false);
       })
@@ -95,7 +95,7 @@ export function ModalDefault({
 
   const deleteStudent = async () => {
     await api
-      .delete(`/Alunos/${dataEdit?.id}/`)
+      .delete(`/Students/${dataEdit?.id}/`)
       .then(() => {
         setOpen(false);
       })
@@ -107,7 +107,7 @@ export function ModalDefault({
   const addCourse = async (data: ICourseProps) => {
     const headers = { "Content-Type": "application/json" };
     await api
-      .post("/Cursos/", data, { headers: headers })
+      .post("/Courses/", data, { headers: headers })
       .then(() => {
         setOpen(false);
       })
@@ -119,7 +119,7 @@ export function ModalDefault({
   const updateCourse = async (data: ICourseProps) => {
     const headers = { "Content-Type": "application/json" };
     await api
-      .put(`/Cursos/${dataEdit?.id}/`, data, { headers: headers })
+      .put(`/Courses/${dataEdit?.id}/`, data, { headers: headers })
       .then(() => {
         setOpen(false);
       })
@@ -130,7 +130,7 @@ export function ModalDefault({
 
   const deleteCourse = async () => {
     await api
-      .delete(`/Cursos/${dataEdit?.id}/`)
+      .delete(`/Courses/${dataEdit?.id}/`)
       .then(() => {
         setOpen(false);
       })
@@ -142,7 +142,7 @@ export function ModalDefault({
   const addRegistration = async (data: ICourseProps) => {
     const headers = { "Content-Type": "application/json" };
     await api
-      .post("/Matriculas/", data, { headers: headers })
+      .post("/Registrations/", data, { headers: headers })
       .then(() => {
         setOpen(false);
       })
@@ -154,7 +154,7 @@ export function ModalDefault({
   const updateRegistration = async (data: ICourseProps) => {
     const headers = { "Content-Type": "application/json" };
     await api
-      .put(`/Matriculas/${dataEdit?.id}/`, data, { headers: headers })
+      .put(`/Registrations/${dataEdit?.id}/`, data, { headers: headers })
       .then(() => {
         setOpen(false);
       })
@@ -165,7 +165,7 @@ export function ModalDefault({
 
   const deleteRegistration = async () => {
     await api
-      .delete(`/Matriculas/${dataEdit?.id}/`)
+      .delete(`/Registrations/${dataEdit?.id}/`)
       .then(() => {
         setOpen(false);
       })

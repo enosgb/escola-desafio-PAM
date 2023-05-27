@@ -12,10 +12,10 @@ import CourseTable from "../../components/MainTable/CourseTable";
 
 interface ICourseProps {
   id: number;
-  codigo_curso: string;
-  descricao: string;
-  nivel: string;
-  nivel_name: string;
+  course_code: string;
+  description: string;
+  level: string;
+  level_name: string;
 }
 
 interface courseLevelProps {
@@ -38,26 +38,26 @@ export default function Cousers() {
     <>
       <Row>
         <InputDefault
-          name="codigo_curso"
+          name="course_code"
           label="Código do curso:"
           placeholder="Crie um código para curso..."
           width="300px"
-          defaultValue={courseEdit?.codigo_curso}
+          defaultValue={courseEdit?.course_code}
         />
       </Row>
       <Row>
         <InputDefault
-          name="descricao"
+          name="description"
           label="Descrição:"
           width="300px"
           placeholder="Descrição..."
-          defaultValue={courseEdit?.descricao}
+          defaultValue={courseEdit?.description}
         />
       </Row>
       <Row>
         <SelectDefault
-          defaultValue={courseEdit?.nivel}
-          name="nivel"
+          defaultValue={courseEdit?.level}
+          name="level"
           label="Nível:"
           options={courseLevels}
         />
@@ -67,7 +67,7 @@ export default function Cousers() {
 
   const getCourses = async () => {
     await api
-      .get(`/Cursos/?search=${search}`)
+      .get(`/Courses/?search=${search}`)
       .then((response) => {
         setCourses(response.data);
       })
@@ -78,7 +78,7 @@ export default function Cousers() {
 
   const getCourseLevels = async () => {
     await api
-      .get(`/curso/levels/`)
+      .get(`/course/levels/`)
       .then((response) => {
         let temp = response.data.map((level: courseLevelProps) => ({
           value: level.value,

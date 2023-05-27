@@ -9,12 +9,12 @@ interface ITableMainProps {
 
 interface IRegistrationProps {
   id: number;
-  periodo: string;
-  aluno: string;
-  curso: string;
-  periodo_nome: string;
-  aluno_nome: string;
-  curso_nome: string;
+  period: string;
+  student: string;
+  course: string;
+  period_name: string;
+  student_name: string;
+  course_name: string;
 }
 
 export default function RegitrationTable({
@@ -43,13 +43,13 @@ export default function RegitrationTable({
           onClick={() => handleEditRegistration(registration)}
         >
           <Col>
-            <Col1>{registration.periodo_nome}</Col1>
+            <Col1>{registration.period_name}</Col1>
           </Col>
           <Col>
-            <Col1>{registration.aluno_nome}</Col1>
+            <Col1>{registration.student_name}</Col1>
           </Col>
           <Col>
-            <Col1>{registration.curso_nome}</Col1>
+            <Col1>{registration.course_name}</Col1>
           </Col>
         </TableRow>
       ))}

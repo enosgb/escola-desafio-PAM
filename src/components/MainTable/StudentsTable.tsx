@@ -9,10 +9,10 @@ interface ITableMainProps {
 
 interface IStudentProps {
   id: number;
-  nome: string;
+  name: string;
   rg: string;
   cpf: string;
-  data_nascimento: string;
+  birth_date: string;
 }
 
 export default function StudentsTable({
@@ -38,7 +38,7 @@ export default function StudentsTable({
       {students.map((student: IStudentProps) => (
         <TableRow onClick={() => handleEditStudent(student)} key={student.id}>
           <Col>
-            <Col1>{student.nome}</Col1>
+            <Col1>{student.name}</Col1>
           </Col>
           <Col>
             <Col1>{student.rg}</Col1>
@@ -48,7 +48,7 @@ export default function StudentsTable({
           </Col>
           <Col>
             <Col1>
-              {new Date(student.data_nascimento).toLocaleString().slice(0, 10)}
+              {new Date(student.birth_date).toLocaleString().slice(0, 10)}
             </Col1>
           </Col>
         </TableRow>

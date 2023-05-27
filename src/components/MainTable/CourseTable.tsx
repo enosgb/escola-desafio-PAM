@@ -9,10 +9,10 @@ interface ITableMainProps {
 
 interface ICoursesProps {
   id: number;
-  codigo_curso: string;
-  descricao: string;
-  nivel: string;
-  nivel_name:string;
+  course_code: string;
+  description: string;
+  level: string;
+  level_name:string;
 }
 
 export default function CourseTable({
@@ -38,13 +38,13 @@ export default function CourseTable({
       {courses.map((course: ICoursesProps) => (
         <TableRow key={course.id} onClick={() => handleEditCourse(course)}>
           <Col>
-            <Col1>{course.codigo_curso}</Col1>
+            <Col1>{course.course_code}</Col1>
           </Col>
           <Col>
-            <Col1>{course.descricao}</Col1>
+            <Col1>{course.description}</Col1>
           </Col>
           <Col>
-            <Col1>{course.nivel_name}</Col1>
+            <Col1>{course.level_name}</Col1>
           </Col>
         </TableRow>
       ))}
