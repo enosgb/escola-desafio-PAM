@@ -49,6 +49,7 @@ export default function Students() {
     <>
       <Row>
         <InputDefault
+          required={true}
           defaultValue={studentEdit?.name ?? ""}
           name="name"
           label="Nome:"
@@ -58,6 +59,7 @@ export default function Students() {
       </Row>
       <Row>
         <InputDefault
+          required={true}
           name="birth_date"
           label="Data de Nascimento:"
           type="date"
@@ -68,6 +70,7 @@ export default function Students() {
       </Row>
       <Row>
         <InputDefault
+          required={true}
           defaultValue={studentEdit?.rg ?? ""}
           name="rg"
           label="RG:"
@@ -77,6 +80,7 @@ export default function Students() {
       </Row>
       <Row>
         <InputDefault
+          required={true}
           name="cpf"
           label="CPF"
           placeholder="CPF.."
@@ -89,7 +93,7 @@ export default function Students() {
 
   return (
     <>
-      <Sidebar visibility={sidebarVisible} setVisibility={setSidebarvisible}/>
+      <Sidebar visibility={sidebarVisible} setVisibility={setSidebarvisible} />
       <ModalDefault
         open={openModalDefault}
         setOpen={setOpenModalDefault}
@@ -107,7 +111,7 @@ export default function Students() {
               setStudentEdit(undefined);
               setOpenModalDefault(true);
             }}
-            text={window_size.matches ? "Adicionar Aluno":"Novo"}
+            text={window_size.matches ? "Adicionar Aluno" : "Novo"}
           />
         </TableTools>
         <StudentsTable

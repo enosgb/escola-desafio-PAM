@@ -7,6 +7,7 @@ interface IInputProps {
   type?: string;
   name?: string | undefined;
   defaultValue?: string;
+  required?: boolean;
 }
 
 export default function InputDefault({
@@ -16,11 +17,13 @@ export default function InputDefault({
   placeholder,
   name,
   defaultValue,
+  required = false,
 }: IInputProps) {
   return (
     <InputControl>
       <Label>{label}</Label>
       <Input
+        required={required}
         defaultValue={defaultValue}
         name={name}
         width={width}
