@@ -1,4 +1,3 @@
-import React from "react";
 import { ButtonD } from "./style";
 
 export interface IButtonProps {
@@ -12,10 +11,17 @@ export default function ButtonDefault({
   text,
   onClick,
   type = "button",
-  background
+  background,
 }: IButtonProps) {
+  const window_size = window.matchMedia("(min-width: 700px)");
+
   return (
-    <ButtonD background={background} type={type} onClick={onClick}>
+    <ButtonD
+      width={window_size.matches ? undefined : "80px"}
+      background={background}
+      type={type}
+      onClick={onClick}
+    >
       {text}
     </ButtonD>
   );

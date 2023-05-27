@@ -4,8 +4,7 @@ import { ModalDefault } from "../../components/ModalDefault/ModalDefault";
 
 import Search from "../../components/Search/Search";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { Container, Title } from "../../style";
-import { TableTools } from "./style";
+import { Container, TableTools, Title } from "../../style";
 import { Row } from "../../components/ModalDefault/style";
 import InputDefault from "../../components/InputDefault/InputDefault";
 import api from "../../services/api";
@@ -26,6 +25,8 @@ export default function Students() {
   const [students, setStudents] = useState([]);
   const [studentEdit, setStudentEdit] = useState<IStudentProps>();
   const [search, setSearch] = useState("");
+  const [sidebarVisible, setSidebarvisible] = useState(false);
+  const window_size = window.matchMedia("(min-width: 700px)");
 
   const getStudents = async () => {
     await api
@@ -88,7 +89,7 @@ export default function Students() {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar visibility={sidebarVisible} setVisibility={setSidebarvisible}/>
       <ModalDefault
         open={openModalDefault}
         setOpen={setOpenModalDefault}
@@ -106,7 +107,7 @@ export default function Students() {
               setStudentEdit(undefined);
               setOpenModalDefault(true);
             }}
-            text={"Adicionar Aluno"}
+            text={window_size.matches ? "Adicionar Aluno":"Novo"}
           />
         </TableTools>
         <StudentsTable

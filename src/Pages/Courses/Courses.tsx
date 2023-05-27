@@ -3,8 +3,7 @@ import ButtonDefault from "../../components/ButtonDefault/ButtonDefault";
 import { ModalDefault } from "../../components/ModalDefault/ModalDefault";
 import Search from "../../components/Search/Search";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { Container, Title } from "../../style";
-import { TableTools } from "../Students/style";
+import { Container, TableTools, Title } from "../../style";
 import InputDefault from "../../components/InputDefault/InputDefault";
 import { Row } from "../../components/ModalDefault/style";
 import SelectDefault from "../../components/SelectDefault/SelectDefault";
@@ -32,6 +31,8 @@ export default function Cousers() {
   const [courseLevels, setCourseLevels] = useState([]);
   const [search, setSearch] = useState("");
   const [courseEdit, setCourseEdit] = useState<ICourseProps>();
+  const [sidebarVisible, setSidebarvisible] = useState(false);
+  const window_size = window.matchMedia("(min-width: 700px)");
 
   const modalBody = (
     <>
@@ -62,7 +63,7 @@ export default function Cousers() {
         />
       </Row>
     </>
-  ); 
+  );
 
   const getCourses = async () => {
     await api
@@ -99,7 +100,7 @@ export default function Cousers() {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar visibility={sidebarVisible} setVisibility={setSidebarvisible} />
       <ModalDefault
         route="courses"
         open={openModalDefault}
@@ -117,7 +118,7 @@ export default function Cousers() {
               setCourseEdit(undefined);
               setOpenModalDefault(true);
             }}
-            text={"Adicionar Curso"}
+            text={window_size.matches ? "Adicionar Curso" : "Novo"}
           />
         </TableTools>
         <CourseTable

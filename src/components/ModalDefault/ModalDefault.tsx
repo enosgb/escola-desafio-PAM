@@ -193,7 +193,7 @@ export function ModalDefault({
             <ModalHeader>
               <ModalTitle> {modalTitle}</ModalTitle>
             </ModalHeader>
-            {modalBody}
+            {open ? modalBody : null}
             <ModalFooter>
               {dataEdit ? (
                 <ButtonDefault

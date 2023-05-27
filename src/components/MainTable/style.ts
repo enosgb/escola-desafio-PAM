@@ -6,8 +6,13 @@ export const Small = styled.small`
 
 export const Table = styled.ul`
 
-  @media only screen and (max-width: 600px) {
-    width: 400px;
+  @media only screen and (max-width: 390px) {
+    width: 250px;
+  }
+
+/* /* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 390px) {
+    width: 330px;
   }
 
   /* /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -19,9 +24,6 @@ export const Table = styled.ul`
   @media only screen and (min-width: 768px) {
     width: 500px;
   }
-
-
-
 
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
@@ -41,6 +43,10 @@ export const TableHeader = styled.li`
   text-transform: uppercase;
   letter-spacing: 0.03em;
   border-radius: 10px;
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+
 `;
 
 export const TableRow = styled.li`
@@ -53,6 +59,10 @@ export const TableRow = styled.li`
   &:hover{
     transition: 0.5s;
     transform: scale(1.05);
+  }
+  @media only screen and (max-width: 600px) {
+    
+    font-size: 12px;
   }
 `;
 

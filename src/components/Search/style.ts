@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const SearchInput = styled.input`
   box-sizing: border-box;
-  width: 250px;
+  width: ${(props:any)=> props.width ? props.width : "250px"};
   height: 35px;
   background: #f5f7fb;
   border: none;

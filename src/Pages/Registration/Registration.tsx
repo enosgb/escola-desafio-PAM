@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import ButtonDefault from "../../components/ButtonDefault/ButtonDefault";
 import Search from "../../components/Search/Search";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { Container, Title } from "../../style";
-import { TableTools } from "../Students/style";
+import { Container, TableTools, Title } from "../../style";
 import { ModalDefault } from "../../components/ModalDefault/ModalDefault";
 import { Row } from "../../components/ModalDefault/style";
 
@@ -48,6 +47,9 @@ export default function Registration() {
   const [coursesOptions, setCoursesOptions] = useState([]);
   const [registrationEdit, setRegistrationEdit] =
     useState<IRegistrationProps>();
+
+  const [sidebarVisible, setSidebarvisible] = useState(false);
+  const window_size = window.matchMedia("(min-width: 700px)");
 
   const getCoursesOptions = async () => {
     await api
@@ -142,7 +144,7 @@ export default function Registration() {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar visibility={sidebarVisible} setVisibility={setSidebarvisible} />
       <ModalDefault
         route="registrations"
         open={openModalDefault}
@@ -156,7 +158,7 @@ export default function Registration() {
         <TableTools>
           <Search placeholder="Aluno" setSearch={setSearch} />
           <ButtonDefault
-            text={"Adicionar Matrícula"}
+            text={window_size.matches ? "Adicionar Matrícula" : "Novo"}
             onClick={() => {
               setRegistrationEdit(undefined);
               setOpenModalDefault(true);

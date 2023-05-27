@@ -3,13 +3,13 @@ import { css, styled } from "styled-components";
 
 export const Modal:any = styled.div`
   visibility: hidden;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height:  100%;
-  overflow: auto;
+  overflow: auto;  
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 0;
@@ -24,7 +24,7 @@ export const Modal:any = styled.div`
 
 export const ModalContent = styled.div`
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 400px;
