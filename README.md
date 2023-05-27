@@ -18,7 +18,7 @@ git clone https://github.com/enosgb/escola-desafio-PAM.git
 Enter the folder project.
 
 ```python
-cd escola
+cd escola-desafio-PAM
 ```
 Install dependencies with yarn or npm.
 
