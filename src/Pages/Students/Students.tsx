@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ButtonDefault from "../../components/ButtonDefault/ButtonDefault";
-import TableMain from "../../components/MainTable/StudentsTable";
 import { ModalDefault } from "../../components/ModalDefault/ModalDefault";
 
 import Search from "../../components/Search/Search";
@@ -10,16 +9,27 @@ import { TableTools } from "./style";
 import { Row } from "../../components/ModalDefault/style";
 import InputDefault from "../../components/InputDefault/InputDefault";
 import api from "../../services/api";
+import StudentsTable from "../../components/MainTable/StudentsTable";
+
+interface IStudentProps {
+  id: number;
+  nome: string;
+  rg: string;
+  cpf: string;
+  data_nascimento: string;
+}
 
 export default function Students() {
   const table_headers = ["nome", "rg", "cpf", "data de nascimento"];
   const [openModalDefault, setOpenModalDefault] = useState(false);
 
   const [students, setStudents] = useState([]);
+  const [studentEdit, setStudentEdit] = useState<IStudentProps>();
+  const [search, setSearch] = useState("");
 
   const getStudents = async () => {
     await api
-      .get("/Alunos")
+      .get(`/Alunos/?search=${search}`)
       .then((response) => {
         setStudents(response.data);
       })
@@ -32,12 +42,13 @@ export default function Students() {
     if (!openModalDefault) {
       getStudents();
     }
-  }, [openModalDefault]);
+  }, [openModalDefault, search]);
 
   const modalBody = (
     <>
       <Row>
         <InputDefault
+          defaultValue={studentEdit?.nome ?? ""}
           name="nome"
           label="Nome:"
           placeholder="Nome..."
@@ -51,10 +62,17 @@ export default function Students() {
           type="date"
           width="300px"
           placeholder="Data Nascimento"
+          defaultValue={studentEdit?.data_nascimento ?? ""}
         />
       </Row>
       <Row>
-        <InputDefault name="rg" label="RG:" placeholder="RG..." width="300px" />
+        <InputDefault
+          defaultValue={studentEdit?.rg ?? ""}
+          name="rg"
+          label="RG:"
+          placeholder="RG..."
+          width="300px"
+        />
       </Row>
       <Row>
         <InputDefault
@@ -62,6 +80,7 @@ export default function Students() {
           label="CPF"
           placeholder="CPF.."
           width="300px"
+          defaultValue={studentEdit?.cpf ?? ""}
         />
       </Row>
     </>
@@ -75,17 +94,27 @@ export default function Students() {
         setOpen={setOpenModalDefault}
         modalTitle="Novo Aluno"
         modalBody={modalBody}
+        dataEdit={studentEdit}
+        route="students"
       ></ModalDefault>
       <Container>
         <Title>Alunos</Title>
         <TableTools>
-          <Search placeholder="Aluno" />
+          <Search setSearch={setSearch} placeholder="Aluno" />
           <ButtonDefault
-            onClick={() => setOpenModalDefault(true)}
+            onClick={() => {
+              setStudentEdit(undefined);
+              setOpenModalDefault(true);
+            }}
             text={"Adicionar Aluno"}
           />
         </TableTools>
-        <TableMain table_headers={table_headers} students={students} />
+        <StudentsTable
+          table_headers={table_headers}
+          students={students}
+          setOpenModalDefault={setOpenModalDefault}
+          setStudentEdit={setStudentEdit}
+        />
       </Container>
     </>
   );

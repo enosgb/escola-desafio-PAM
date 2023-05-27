@@ -5,11 +5,17 @@ export interface IButtonProps {
   text: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   type?: "button" | "submit" | "reset" | undefined;
+  background?: string;
 }
 
-export default function ButtonDefault({ text, onClick, type="button" }: IButtonProps) {
+export default function ButtonDefault({
+  text,
+  onClick,
+  type = "button",
+  background
+}: IButtonProps) {
   return (
-    <ButtonD type={type} onClick={onClick}>
+    <ButtonD background={background} type={type} onClick={onClick}>
       {text}
     </ButtonD>
   );

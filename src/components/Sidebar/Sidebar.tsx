@@ -1,4 +1,4 @@
-import { ImgPam, Navlink, SidebarFixed } from "./style";
+import { ImgPam, Navlink, SidebarContent, SidebarFixed } from "./style";
 import LogoPam from "../../assets/pam-logo-gray.png";
 import { useNavigate } from "react-router-dom";
 
@@ -11,11 +11,13 @@ export default function Sidebar() {
   return (
     <>
       <SidebarFixed>
-        <ImgPam src={LogoPam} />
+        <SidebarContent>
+          <ImgPam src={LogoPam} />
 
-        <Navlink onClick={() => setRoute("/Alunos")}>Alunos</Navlink>
-        <Navlink onClick={() => setRoute("/Cursos")}>Cursos</Navlink>
-        <Navlink onClick={() => setRoute("/Matriculas")}>Martrículas</Navlink>
+          <Navlink onClick={() => setRoute("/Alunos")}>Alunos</Navlink>
+          <Navlink onClick={() => setRoute("/Cursos")}>Cursos</Navlink>
+          <Navlink onClick={() => setRoute("/Matriculas")}>Martrículas</Navlink>
+        </SidebarContent>
       </SidebarFixed>
     </>
   );

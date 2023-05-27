@@ -6,6 +6,7 @@ interface IInputProps {
   placeholder: string;
   type?: string;
   name?: string | undefined;
+  defaultValue?: string;
 }
 
 export default function InputDefault({
@@ -14,11 +15,18 @@ export default function InputDefault({
   type = "text",
   placeholder,
   name,
+  defaultValue,
 }: IInputProps) {
   return (
     <InputControl>
       <Label>{label}</Label>
-      <Input name={name} width={width} type={type} placeholder={placeholder} />
+      <Input
+        defaultValue={defaultValue}
+        name={name}
+        width={width}
+        type={type}
+        placeholder={placeholder}
+      />
     </InputControl>
   );
 }

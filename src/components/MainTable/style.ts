@@ -5,6 +5,7 @@ export const Small = styled.small`
 `;
 
 export const Table = styled.ul`
+
   @media only screen and (max-width: 600px) {
     width: 400px;
   }
@@ -18,6 +19,9 @@ export const Table = styled.ul`
   @media only screen and (min-width: 768px) {
     width: 500px;
   }
+
+
+
 
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
@@ -40,11 +44,16 @@ export const TableHeader = styled.li`
 `;
 
 export const TableRow = styled.li`
+  cursor: pointer;
   display: flex;
   margin-top: 5px;
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  &:hover{
+    transition: 0.5s;
+    transform: scale(1.05);
+  }
 `;
 
 export const Col = styled.div`

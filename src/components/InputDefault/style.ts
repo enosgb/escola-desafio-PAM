@@ -9,7 +9,7 @@ export const InputControl = styled.div`
 
 export const Label = styled.p`
   font-size: 18px;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
 `;
 
 export const Input = styled.input`
