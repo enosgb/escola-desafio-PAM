@@ -5,7 +5,7 @@
 
 Install [Nodejs](https://nodejs.org/en)
 
-Use the package manager [Nodejs](https://nodejs.org/en) to install Django REST.
+Access [Nodejs](https://nodejs.org/en) to install NodeJs.
 
 
 ## Clone and Run
